@@ -45,20 +45,7 @@ commit & push.
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-Request Client  
-️️|  
-V  
-urls.py (routing: URL pada request dicocokkan dengan views yang telah dibuat)  
-|  
-V  
-views.py (menyatukan model & template, mengatur apa yang dikirim ke client)  
-|--> models.py <--> Database  
-|   (models adalah orm. berisi struktur tabel & query. Dapat mensuplai data ke view. Dapat akses data di db jika perlu)  
-|  
-|--> template (HTML yg akan menggunakan data dari view)  
-|  
-V  
-HTTP response berupa berkas html yg sudah diproses oleh view  
+<img width="647" height="381" alt="Screenshot 2025-09-08 at 13 41 37" src="https://github.com/user-attachments/assets/45407a28-1be1-43d3-8407-eaa183926c05" />
 
 3. Jelaskan peran settings.py dalam proyek Django!
 
