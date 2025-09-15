@@ -118,3 +118,4 @@ Jalankan project dan coba tambahkan sebuah product menggunakan form, product yan
 Tidak ada.
 
 screenshot postman keempat url:
+<img width="839" height="621" alt="Screenshot 2025-09-15 at 09 01 16" src="https://github.com/user-attachments/assets/1fa97594-ca66-4975-98c8-f40ef9b18007" />
