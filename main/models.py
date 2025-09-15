@@ -13,13 +13,11 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True) 
 
     name = models.CharField(max_length=255)
-    price = models.IntegerField
-    description = models.TextField
+    price = models.IntegerField()
+    description = models.TextField()
     thumbnail = models.URLField(blank=True, null=True)
-    category = models.CharField(choices=CATEGORY_CHOICES, default='update')
-    is_featured = models.BooleanField(default=False)   
-
-    
+    category = models.CharField(choices=CATEGORY_CHOICES, default='other')
+    is_featured = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return self.name
