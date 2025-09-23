@@ -119,3 +119,38 @@ Tidak ada.
 
 screenshot postman keempat url:
 <img width="839" height="621" alt="Screenshot 2025-09-15 at 09 01 16" src="https://github.com/user-attachments/assets/1fa97594-ca66-4975-98c8-f40ef9b18007" />
+
+Tugas 4
+
+1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+
+AuthenticationForm adalah sebuah class form bawaan dari django yang berisi field username dan password.  Kelebihannya mudah digunakan, validasi, dan aman dari csrf. Kekurangannya lebih susah dimodifikasi dibanding membuat form sendiri.
+
+2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+
+Autentikasi adalah memastikan identitas pengguna beanr & sesuai. Autorisasi menentukan apakah pengguna dapat mengakses sesuatu atau tidak.  
+Django menyediakan model User, form AuthenticationForm, serta function login logout untuk mempermudah proses autentikasi. Django juga menyediakan decorator @login_required untuk otorisasi.
+
+3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+
+Cookie  
+Kelebihannya stateless, tidak disimpan di server melainkan di client, sehingga lebih scalable.  Kekurangannya, aplikasi web rentan terhadap penyerangan digital yang memanfaatkan cookie, jika tidak diamankan dengan baik.  
+Session  
+Kelebihannya lebih aman dari serangan digital karena sepenuhnya diatur pada server alias oleh kita.  
+Kekurangannya tidak se-scalable cookies karena perlu memory untuk menyimpan session tiap pengguna.
+
+4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+
+Cookies tidak aman secara default. Cookies rentan terhadap CSRF, XSS, MitM.  
+Django mempunyai beberapa opsi untuk mengamanman cookies dari masing-masing serangan tersebut. CSRF dengan csrf token dan opsi cookies sameSite. XSS dengan opsi cookies httpOnly (default behavior). MitM attack dengan pengaturan SESSION_COOKIE_SECURE = True atau menggunakan opsi cookie secure.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+Membuat view function untuk register, login, logout, memanfaatkan function dan form yang disediakan django.  
+Buat url untuk view function yang telah dibuat.  
+Buat berkas html untuk register dan login, gunakan form yang disediakan django.  
+Gunakan decorator login oleh django untuk mengamankan route-route tertentu seperti show_main, create_product, dan show_product.  
+Bikin view function login meng-set cookie "last_login" setelah login berhasil, dan baca cookienya di show_main untuk melihat kapan terakhir login.  
+Di show_main karena sudah dipastikan logged in bisa kita akses request.user.username untuk mengambil username pengguna untuk ditampilkan.  
+Terakhir, untuk menghubungkan Product dengan User, bikin relation antara keduanya dengan memberikan field User yang merupakan foreign key pada model Product.  
+Pada form create product kita bisa attach data user sebelum meng-save data form. Pada show_main kita bisa membuat filter product berdasarkan url param & user yang sedang logged in melalui request.user.

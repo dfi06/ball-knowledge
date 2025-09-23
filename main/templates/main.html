@@ -8,11 +8,12 @@
 <p>{{kelas}}</p>
 
 <a href="{% url 'main:create_product' %}">
-    <button>+ Add News</button>
+    <button>+ Add Product</button>
 </a>
 <a href="{% url 'main:logout' %}">
     <button>Logout</button>
 </a>
+<h2>Hi {{username}}!</h2>
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 <a href="?filter=all">
     <button type="button">All Products</button>
