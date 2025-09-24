@@ -124,7 +124,7 @@ Tugas 4
 
 1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
 
-AuthenticationForm adalah sebuah class form bawaan dari django yang berisi field username dan password.  Kelebihannya mudah digunakan, validasi, dan aman dari csrf. Kekurangannya lebih susah dimodifikasi dibanding membuat form sendiri.
+AuthenticationForm adalah sebuah class form bawaan dari django yang berisi field username dan password. Kelebihannya mudah digunakan, validasi, dan aman dari csrf. Kekurangannya lebih susah dimodifikasi dibanding membuat form sendiri.
 
 2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
 
@@ -134,7 +134,7 @@ Django menyediakan model User, form AuthenticationForm, serta function login log
 3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
 
 Cookie  
-Kelebihannya stateless, tidak disimpan di server melainkan di client, sehingga lebih scalable.  Kekurangannya, aplikasi web rentan terhadap penyerangan digital yang memanfaatkan cookie, jika tidak diamankan dengan baik.  
+Kelebihannya stateless, tidak disimpan di server melainkan di client, sehingga lebih scalable. Kekurangannya, aplikasi web rentan terhadap penyerangan digital yang memanfaatkan cookie, jika tidak diamankan dengan baik.  
 Session  
 Kelebihannya lebih aman dari serangan digital karena sepenuhnya diatur pada server alias oleh kita.  
 Kekurangannya tidak se-scalable cookies karena perlu memory untuk menyimpan session tiap pengguna.
@@ -154,3 +154,15 @@ Bikin view function login meng-set cookie "last_login" setelah login berhasil, d
 Di show_main karena sudah dipastikan logged in bisa kita akses request.user.username untuk mengambil username pengguna untuk ditampilkan.  
 Terakhir, untuk menghubungkan Product dengan User, bikin relation antara keduanya dengan memberikan field User yang merupakan foreign key pada model Product.  
 Pada form create product kita bisa attach data user sebelum meng-save data form. Pada show_main kita bisa membuat filter product berdasarkan url param & user yang sedang logged in melalui request.user.
+
+Tugas 5
+
+1.  Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+
+2.  Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+
+3.  Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+
+4.  Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+
+5.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
