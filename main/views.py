@@ -32,7 +32,7 @@ def show_main(request):
 @login_required(login_url='/login')
 def create_product(request):
     form = ProductForm(request.POST or None)
-
+    
     if form.is_valid() and request.method == 'POST':
         product_entry = form.save(commit = False)
         product_entry.user = request.user
@@ -45,7 +45,7 @@ def create_product(request):
 @login_required(login_url='/login')
 def show_product(request, id):
     product = get_object_or_404(Product, pk=id)
-
+    product.increment_views()
     context = {
         'product': product
     }
