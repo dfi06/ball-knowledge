@@ -159,10 +159,46 @@ Tugas 5
 
 1.  Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
 
+    Urutan prioritas pengambilan CSS selector, dari yang paling tinggi ke yang paling rendah, adalah sebagai berikut:  
+    1.  Inline: atribut style pada html tag. Contoh: <p style="color: red;">xyz</p>  
+    2.  ID selector: ID unik dari elemen. Contoh: #my-id  
+    3.  Class selector: menargetkan elemen berdasarkan kelas. Contoh: .my-class  
+    4.  Tag selectors: menargetkan semua tag tertentu. Contoh: p, div  
+
+    Jika ada beberapa aturan CSS dengan prioritas yang sama, maka yang terakhir didefinisikan dalam stylesheet akan diutamakan.
+
 2.  Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+
+    Responsive design penting karena pengguna mengakses web dari berbagai perangkat dengan ukuran layar yang berbeda-beda (desktop, tablet, smartphone). Dengan responsive design, tampilan aplikasi web dapat beradaptasi secara otomatis dengan ukuran layar perangkat, sehingga memberikan pengalaman pengguna yang optimal di semua perangkat. Tanpa responsive design, tampilan website pada pengguna perangkat mobile mungkin mungkin sulit dilihat atau rusak total.
+
+    Contoh aplikasi yang menerapkan responsive design: hampir semua situs web modern, seperti google.com, x.com, instagram.com, dan **Twitter**. Alasannya karena mayoritas pengguna berasal dari smartphone, sehinggu perlu dibuat responsive agar dapat digunakan oleh mereka.  
+    Contoh aplikasi yang belum menerapkan responsive design: situs-situs web lama atau yang tidak terawat dengan baik. Alasannya karena website dibuat sebelum konsep responsive design populer atau memang sengaja tidak dibikin responsif karena tidak cukup budget tim developer.
 
 3.  Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
 
+    Padding: Ruang transparan di dalam border, antara border dan konten elemen.
+    Border: Garis yang mengelilingi padding dan konten. Border bisa memiliki berbagai gaya (solid, dashed), warna, dan ketebalan.
+    Margin: Ruang transparan di luar border. Margin digunakan untuk membuat jarak antar elemen.
+    Ketiganya diimplementasikan dalam CSS menggunakan properti padding, border, dan margin. Contoh:
+
+    .contoh {
+      padding: 10px;
+      border: 1px solid black;
+      margin: 15px;
+    }
+
 4.  Jelaskan konsep flex box dan grid layout beserta kegunaannya!
 
+    Flexbox: value properti display. Model layout satu dimensi yang memungkinkan item-item di dalam sebuah container diatur secara fleksibel dalam satu baris atau satu kolom. Flexbox berguna untuk mendistribusikan ruang di antara item-item, meluruskannya, dan mengatur urutannya.
+
+    Grid: value properti display. Model layout dua dimensi yang memungkinkan item-item diatur dalam baris dan kolom. Grid dipakai untuk membuat layout halaman web yang terstruktur.
+
 5.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+    Import cdn tailwind di base.html lalu beri style di setiap komponen website yang perlu dikasih style dan dibikin responsif. dua-duanya lewat class="" untuk setiap tag di file .html. Untuk responsif, gunakan breakpoint sm: md: lg:.  
+    Bikin juga directory /static dan didalamnya /css dan /image dan global.css di /css. kasih style untuk form di global.css (opsional, bisa juga dengan class)
+    tambahkan foto di /image untuk ditampilkan ketika tidak ada product di main.html, gunakan if statement utk cek.
+    bikin card untuk product, card_product.html, tampilkan di main.html dengan for loop.
+    cek di card_product.html apakah user yg logged-in merupakan pemilik dari produk, jika iya tampilkan tombol edit dan delet.  
+    bikin view function, route dan .html utk edit dan delet. bikin tombol di card_product.html agar redirect ke routenya masing-masing.  
+    bikin navbar responsive dengan breakpoint dan duplikasi tag agar mudah.
