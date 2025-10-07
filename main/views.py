@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.utils.html import strip_tags
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -47,9 +48,9 @@ def create_product(request):
 @csrf_exempt
 @require_POST
 def add_product_entry_ajax(request):
-    name = request.POST.get("name")
-    price = request.POST.get("price")
-    description = request.POST.get("description")
+    name = strip_tags(request.POST.get("name"))
+    price = strip_tags(request.POST.get("price"))
+    description = strip_tags(request.POST.get("description"))
     category = request.POST.get("category")
     thumbnail = request.POST.get("thumbnail")
     is_featured = request.POST.get("is_featured") == 'on'  # checkbox handling
