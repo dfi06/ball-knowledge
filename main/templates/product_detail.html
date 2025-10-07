@@ -203,7 +203,7 @@
         
         // Category badge
         const categoryBadge = document.createElement('span');
-        categoryBadge.className = 'inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-green-600 text-white';
+        categoryBadge.className = 'inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-orange-600 text-white';
         categoryBadge.textContent = getCategoryLabel(product.category);
         badgesContainer.appendChild(categoryBadge);
         
@@ -245,6 +245,12 @@
         
         // Set content
         articleContentText.textContent = product.description;
+        
+        // Create and set price
+        const priceElement = document.createElement('div');
+        priceElement.className = 'text-center text-2xl font-bold text-gray-900 my-4';
+        priceElement.textContent = product.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        articleContentText.parentNode.insertBefore(priceElement, articleContentText.nextSibling);
         
         // Set author
         const authorName = product.user_username || 'Anonymous';
