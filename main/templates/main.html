@@ -254,5 +254,11 @@
 
   // Start application
   initializeProductPage();
+
+  // Add event listener to detect new product
+  document.addEventListener('productAdded', function() {
+      // Refresh data without page reload
+      fetchProductFromServer();
+  });
 </script>
 {% endblock content %}
