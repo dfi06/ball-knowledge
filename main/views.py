@@ -3,7 +3,7 @@ from main.forms import ProductForm
 from main.models import Product
 from django.core import serializers
 import datetime
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -59,8 +59,23 @@ def show_xml(request):
 
 def show_json(request):
     product_list = Product.objects.all()
-    json_data = serializers.serialize('json', product_list)
-    return HttpResponse(json_data, content_type = "application/json")
+    # json_data = serializers.serialize('json', product_list)
+    # return HttpResponse(json_data, content_type = "application/json")
+    data = [
+        {
+            'id': str(product.id),
+            'created_at': product.created_at.isoformat() if product.created_at else None,
+            'name': product.name,
+            'price': product.price,
+            'description': product.description,
+            'thumbnail': product.thumbnail,
+            'category': product.category,
+            'user_id': product.user_id,
+            'is_featured': product.is_featured,
+            'product_views': product.product_views,
+        } for product in product_list
+    ]
+    return JsonResponse(data, safe=False)
 
 def show_xml_by_id(request, product_id):
     try:
