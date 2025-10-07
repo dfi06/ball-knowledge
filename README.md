@@ -171,7 +171,7 @@ Tugas 5
 
     Responsive design penting karena pengguna mengakses web dari berbagai perangkat dengan ukuran layar yang berbeda-beda (desktop, tablet, smartphone). Dengan responsive design, tampilan aplikasi web dapat beradaptasi secara otomatis dengan ukuran layar perangkat, sehingga memberikan pengalaman pengguna yang optimal di semua perangkat. Tanpa responsive design, tampilan website pada pengguna perangkat mobile mungkin mungkin sulit dilihat atau rusak total.
 
-    Contoh aplikasi yang menerapkan responsive design: hampir semua situs web modern, seperti google.com, x.com, instagram.com, dan **Twitter**. Alasannya karena mayoritas pengguna berasal dari smartphone, sehinggu perlu dibuat responsive agar dapat digunakan oleh mereka.  
+    Contoh aplikasi yang menerapkan responsive design: hampir semua situs web modern, seperti google.com, x.com, instagram.com, dan Twitter. Alasannya karena mayoritas pengguna berasal dari smartphone, sehinggu perlu dibuat responsive agar dapat digunakan oleh mereka.  
     Contoh aplikasi yang belum menerapkan responsive design: situs-situs web lama atau yang tidak terawat dengan baik. Alasannya karena website dibuat sebelum konsep responsive design populer atau memang sengaja tidak dibikin responsif karena tidak cukup budget tim developer.
 
 3.  Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
@@ -202,3 +202,40 @@ Tugas 5
     cek di card_product.html apakah user yg logged-in merupakan pemilik dari produk, jika iya tampilkan tombol edit dan delet.  
     bikin view function, route dan .html utk edit dan delet. bikin tombol di card_product.html agar redirect ke routenya masing-masing.  
     bikin navbar responsive dengan breakpoint dan duplikasi tag agar mudah.
+
+Tugas 6 
+
+1. Apa perbedaan antara synchronous request dan asynchronous request?
+
+   Synchronous:  
+   Client mengirim request ke server dan menunggu respons.  
+   Browser pengguna di"block" oleh request sampai requestnya mengembalikan respons.  
+
+   Asynchronous:  
+   Client mengirim request ke server, tetapi tidak harus menunggu respons.   
+   Pengguna dapat terus berinteraksi dengan halaman web saat server memproses permintaan di background.  
+
+2. Bagaimana AJAX bekerja di Django (alur request–response)?  
+
+   1.  Event trigger: Sebuah event dipicu di sisi klien (misal klik tombol atau pengiriman formulir)  
+   2.  AJAX: javaScript membuat XMLHttpRequest atau fetch untuk mengirim permintaan HTTP ke URL tertentu di server Django.  
+   3.  Django URL routing: Django mencocokkan URL yang diminta dengan fungsi view tertentu.   
+   4.  View: fungsi view memproses permintaan. Mungkin berinteraksi dengan database atau melakukan logika backend tertentu.  
+   5.  Response: Client menerima respons dari server Django berupa JSON.   
+   7.  DOM manipulation: javaScript menggunakan data yang diterima untuk memperbarui HTML halaman saat ini secara dinamis.  
+
+3. Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+
+   Pengalaman pengguna lebih baik karena pengguna tidak perlu menunggu reload halaman penuh.  
+   proses yang berjalan lama di server tidak memblock interaksi pengguna dengan situs web.  
+   Membuat pemisahan yang lebih jelas antara tampilan frontend dan logika backend. Backend menjadi lebih seperti API data untuk frontend.  
+
+4. Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+
+   Perlindungan CSRF: gunakan token CSRF.  
+   Validasi data: gunakan strip tag  
+   Authentication & authorization: gunakan dekorator seperti @login_required  
+
+5. Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?  
+
+   Situs web terasa lebih cepat karena tindakan tidak memerlukan reload halaman penuh. Meningkatkan UX saat pembuatan, penampilan, peng-update-an, dan pendeletan data. 
