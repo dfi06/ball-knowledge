@@ -84,14 +84,29 @@ def show_xml_by_id(request, product_id):
         return HttpResponse(xml_data, content_type = "application/xml")
     except Product.DoesNotExist:
         return HttpResponse(status=404)
-    
 def show_json_by_id(request, product_id):
     try:
-        product_list = Product.objects.get(pk=product_id)
-        json_data = serializers.serialize('json', [product_list])
-        return HttpResponse(json_data, content_type="application/json")
+        # product_list = Product.objects.get(pk=product_id)
+        # json_data = serializers.serialize('json', [product_list])
+        # return HttpResponse(json_data, content_type="application/json")
+        product = Product.objects.select_related('user').get(pk=product_id)
+        data = {
+            'id': str(product.id),
+            'created_at': product.created_at.isoformat() if product.created_at else None,
+            'name': product.name,
+            'price': product.price,
+            'description': product.description,
+            'thumbnail': product.thumbnail,
+            'category': product.category,
+            'user_id': product.user_id,
+            'user_username': product.user.username if product.user_id else None,
+            'is_featured': product.is_featured,
+            'product_views': product.product_views,
+        }
+        return JsonResponse(data)
     except Product.DoesNotExist:
-        return HttpResponse(status=404)
+        # return HttpResponse(status=404)
+        return JsonResponse({'detail': 'Not found'}, status=404)
    
 def register(request):
     form = UserCreationForm()
