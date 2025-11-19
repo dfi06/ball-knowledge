@@ -10,6 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -30,7 +37,7 @@ SECRET_KEY = 'django-insecure-fc^pz!km3n4^m-zs=3^@c$sy2+qy!tl8#!^ydnif=8yyg9k#po
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1","daffa-ismail-ballknowledge.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1","daffa-ismail-ballknowledge.pbp.cs.ui.ac.id", "10.0.2.2"]
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -48,7 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'authentication',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
