@@ -167,3 +167,10 @@ else:
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Relax cookie policy for local development so Flutter Web can send cookies
+if DEBUG and not PRODUCTION:
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SAMESITE = 'Lax'
+    SESSION_COOKIE_SAMESITE = 'Lax'

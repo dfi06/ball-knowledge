@@ -87,7 +87,10 @@ def show_xml(request):
     return HttpResponse(xml_data, content_type = "application/xml")
 
 def show_json(request):
+    mine = request.GET.get('mine')
     product_list = Product.objects.all()
+    if mine in ('1', 'true', 'yes') and request.user.is_authenticated:
+        product_list = product_list.filter(user=request.user)
     # json_data = serializers.serialize('json', product_list)
     # return HttpResponse(json_data, content_type = "application/json")
     data = [
@@ -217,10 +220,16 @@ def create_product_flutter(request):
         category = data.get("category", "")
         thumbnail = data.get("thumbnail", "")
         is_featured = data.get("is_featured", False)
-        user = request.user
+        # Ensure price is provided and is integer
+        try:
+            price = int(data.get("price", 0))
+        except (TypeError, ValueError):
+            return JsonResponse({"status": "error", "message": "Invalid price"}, status=400)
+        user = request.user if request.user.is_authenticated else None
         
         new_product = Product(
             name=name, 
+            price=price,
             description=description,
             category=category,
             thumbnail=thumbnail,
@@ -229,6 +238,6 @@ def create_product_flutter(request):
         )
         new_product.save()
         
-        return JsonResponse({"status": "success"}, status=200)
+        return JsonResponse({"status": "success"}, status=201)
     else:
         return JsonResponse({"status": "error"}, status=401)
